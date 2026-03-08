@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": "64b0d97f-4449-48c9-be25-b2a50fc75fe2",
+      "name": "Priyansu",
+      "email": "priyansusekhar0@gmail.com",
+      "password": "2b3fb72bc5d54322:852559fe83724cf27acbf8d2bb7b0c224d9914109ea384df2cabeefbe3f5d70cc149c482b0e2f28276e544f032f2626678bcc2cd5981a4bde582589fcfa9f125",
+      "createdAt": "2026-03-05T16:12:40.134Z",
+      "updatedAt": "2026-03-05T16:30:23.523Z"
+    }
+  ],
+  "pets": [
+    {
+      "id": "pet-1",
+      "name": "Buddy",
+      "type": "dog",
+      "age": 3,
+      "breed": "Labrador",
+      "adopted": false
+    },
+    {
+      "id": "pet-2",
+      "name": "Misty",
+      "type": "cat",
+      "age": 2,
+      "breed": "Persian",
+      "adopted": false
+    }
+  ],
+  "adoptions": [
+    {
+      "id": "9b7a0ea4-4ae2-41ba-bf06-e06085b33dce",
+      "fullName": "Priyansu Sekhar Malana",
+      "email": "priyansusekhar0@gmail.com",
+      "phone": "06370404521",
+      "city": "Cuttack",
+      "petType": "Dog",
+      "petName": "",
+      "homeType": "Apartment",
+      "hasPetsBefore": "No",
+      "message": "i like to adopt a pet",
+      "agree": true,
+      "createdAt": "2026-03-06T19:20:35.792Z"
+    },
+    {
+      "id": "f0e40459-a7ae-4f49-b3ef-830bed4d6db0",
+      "fullName": "t",
+      "email": "t@t.com",
+      "phone": "1",
+      "city": "c",
+      "petType": "Dog",
+      "petName": "",
+      "homeType": "Apartment",
+      "hasPetsBefore": "Yes",
+      "message": "m",
+      "agree": true,
+      "createdAt": "2026-03-06T19:29:40.627Z"
+    },
+    {
+      "id": "12cede53-ba46-45df-8ccd-c8a2f5a0dccb",
+      "fullName": "t",
+      "email": "t@t.com",
+      "phone": "1",
+      "city": "c",
+      "petType": "Dog",
+      "petName": "",
+      "homeType": "Apartment",
+      "hasPetsBefore": "Yes",
+      "message": "m",
+      "agree": true,
+      "createdAt": "2026-03-06T19:36:24.605Z"
+    },
+    {
+      "id": "53b98034-e51f-4530-9eb8-026114c858c9",
+      "fullName": "Priyansu Sekhar Malana",
+      "email": "priyansusekhar0@gmail.com",
+      "phone": "06370404521",
+      "city": "Cuttack",
+      "petType": "Dog",
+      "petName": "",
+      "homeType": "Apartment",
+      "hasPetsBefore": "No",
+      "message": "i like to have a pet",
+      "agree": true,
+      "createdAt": "2026-03-06T19:57:01.216Z"
+    }
+  ]
+}
