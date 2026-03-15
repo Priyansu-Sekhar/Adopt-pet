@@ -7,6 +7,7 @@ import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import ForgotPassword from './pages/ForgotPassword'
 import Adopt from './pages/Adopt'
+import Admin from './pages/Admin'
 import { Toaster} from 'react-hot-toast'
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/adopt" element={<Adopt />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </>
