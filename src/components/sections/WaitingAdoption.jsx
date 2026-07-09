@@ -1,24 +1,24 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Henry from "../../assets/Henry.png";
 import Tommy from "../../assets/Tommy.png";
-import Raj from "../../assets/raj.png";
-import Coffe from "../../assets/coffe.png";
-import Buddy from "../../assets/buddy.png";
+import Raj from "../../assets/Raj.png";
+import Coffe from "../../assets/Coffe.png";
+import Buddy from "../../assets/Buddy.png";
 import kohl from "../../assets/kohl.png";
-import Knight from "../../assets/knight.png";
-import Kitty from "../../assets/kitty.png";
-import Blacky from "../../assets/blacky.png";
-import Matty from "../../assets/matty.png";
-import Harry from "../../assets/harry.png";
-import Bird from "../../assets/bird.png";
-import Bird2 from "../../assets/bird2.png";
-import Bird3 from "../../assets/bird3.png";
-import Bird4 from "../../assets/bird4.png";
-import Rabbit from "../../assets/rabbit.png";
-import Rabbit2 from "../../assets/rabbit2.png";
-import Rabbit3 from "../../assets/rabbit3.png";
-import Rabbit4 from "../../assets/rabbit4.png";
+import Knight from "../../assets/Knight.png";
+import Kitty from "../../assets/Kitty.png";
+import Blacky from "../../assets/Blacky.png";
+import Matty from "../../assets/Matty.png";
+import Harry from "../../assets/Harry.png";
+import Bird from "../../assets/Bird.png";
+import Bird2 from "../../assets/Bird2.png";
+import Bird3 from "../../assets/Bird3.png";
+import Bird4 from "../../assets/Bird4.png";
+import Rabbit from "../../assets/Rabbit.png";
+import Rabbit2 from "../../assets/Rabbit2.png";
+import Rabbit3 from "../../assets/Rabbit3.png";
+import Rabbit4 from "../../assets/Rabbit4.png";
 
 const categories = ["Cats", "Dogs", "Birds", "Rabbits"];
 
@@ -67,11 +67,11 @@ function AnimalCard({ animal, cardWidth, isSmall, onSelect, isSelected, onAdoptN
   const compactMessage = cardWidth < 82;
   const mediumMessage = cardWidth >= 82 && cardWidth < 120;
 
-  const messageContainerClass = compactMessage
-    ? "w-[min(92vw,170px)] min-h-[112px] rounded-2xl p-2"
-    : mediumMessage
-      ? "w-[220px] min-h-[132px] rounded-2xl p-3"
-      : "w-[280px] min-h-[152px] rounded-2xl p-4";
+  const messageWidth = Math.min(
+    Math.max(cardWidth + (compactMessage ? 18 : 28), compactMessage ? 148 : 176),
+    280
+  );
+  const messageMinHeight = compactMessage ? 112 : mediumMessage ? 132 : 152;
 
   const messageTextClass = compactMessage
     ? "text-[9px]"
@@ -155,27 +155,29 @@ function AnimalCard({ animal, cardWidth, isSmall, onSelect, isSelected, onAdoptN
 
         {isSelected && (
           <div
-            className={`absolute left-1/2 bottom-1 z-50 -translate-x-1/2 rounded-2xl border border-[#d8ccbb] bg-[#fffdf9]/95 shadow-[0_18px_36px_rgba(62,46,31,0.3)] ring-1 ring-[#efe3d3] backdrop-blur-sm sm:bottom-2 md:bottom-3 ${messageContainerClass}`}
+            className="absolute left-1/2 bottom-1 z-50 -translate-x-1/2 rounded-2xl border border-[#d8ccbb] bg-[#fffdf9]/95 p-2 shadow-[0_18px_36px_rgba(62,46,31,0.3)] ring-1 ring-[#efe3d3] backdrop-blur-sm sm:bottom-2 sm:p-3 md:bottom-3 md:p-4"
+            style={{ width: `${messageWidth}px`, minHeight: `${messageMinHeight}px` }}
           >
             <div className="flex h-full flex-col gap-1">
-            <p className={`${messageTextClass} font-semibold leading-tight text-[#3f352d] wrap-break-word`}>
-              Name: {animal.name}
-            </p>
-            <p className={`${messageTextClass} mt-0.5 leading-tight text-[#5a4e43] wrap-break-word`}>
-              Breed: {animal.breed}
-            </p>
-            <p className={`${messageTextClass} mt-0.5 leading-tight text-[#5a4e43]`}>
-              Age: {animal.age}
-            </p>
-            <button
-              className={`${messageButtonClass} w-full rounded-full bg-[#8b7355] font-semibold tracking-wide text-white transition-colors hover:bg-[#735f47]`}
-              onClick={(e) => {
-                e.stopPropagation();
-                onAdoptNow();
-              }}
-            >
-              Adopt Now
-            </button>
+              <p className={`${messageTextClass} wrap-break-word font-semibold leading-tight text-[#3f352d]`}>
+                Name: {animal.name}
+              </p>
+              <p className={`${messageTextClass} mt-0.5 wrap-break-word leading-tight text-[#5a4e43]`}>
+                Breed: {animal.breed}
+              </p>
+              <p className={`${messageTextClass} mt-0.5 leading-tight text-[#5a4e43]`}>
+                Age: {animal.age}
+              </p>
+              <button
+                type="button"
+                className={`${messageButtonClass} mt-auto w-full rounded-full bg-[#8b7355] font-semibold tracking-wide text-white transition-colors hover:bg-[#735f47]`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAdoptNow();
+                }}
+              >
+                Adopt Now
+              </button>
             </div>
           </div>
         )}
@@ -189,8 +191,6 @@ export default function WaitingAdoption() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab]   = useState("Dogs");
   const [selectedAnimalId, setSelectedAnimalId] = useState(null);
-  const rowRef                       = useRef(null);
-  const sectionRef                   = useRef(null);
   const [cardWidth, setCardWidth]   = useState(100);
   const [cardGap, setCardGap]       = useState(4);
   const [isSmall, setIsSmall]       = useState(false);
@@ -200,8 +200,10 @@ export default function WaitingAdoption() {
   /* Measure card width + detect small screen */
   useEffect(() => {
     const measure = () => {
-      if (!rowRef.current) return;
-      const rowW = rowRef.current.offsetWidth;
+      const row = document.querySelector("[data-animal-row]");
+      if (!row) return;
+
+      const rowW = row.offsetWidth;
       const small = rowW < 640;
       const medium = rowW >= 640 && rowW < 1024;
       setIsSmall(small);
@@ -223,7 +225,8 @@ export default function WaitingAdoption() {
 
     measure();
     const ro = new ResizeObserver(measure);
-    if (rowRef.current) ro.observe(rowRef.current);
+    const row = document.querySelector("[data-animal-row]");
+    if (row) ro.observe(row);
     return () => ro.disconnect();
   }, [activeTab, animals.length]);
 
@@ -236,14 +239,14 @@ export default function WaitingAdoption() {
       className="w-full flex justify-center items-center bg-[#fffffd] px-3 sm:px-6 lg:px-10 py-8 sm:py-16 -translate-y-6 sm:-translate-y-16"
       onClick={() => setSelectedAnimalId(null)}
     >
-      <div className="w-full max-w-5xl" ref={sectionRef}>
+      <div className="w-full max-w-5xl">
 
         {/* ── Title ── */}
         <h1
           className="
             text-center tracking-wider
             font-['Aladin']
-            md:text-5xl sm: text-4xl lg:text-6xl
+            text-4xl sm:text-4xl md:text-5xl lg:text-6xl
             pt-6 sm:pt-10
             mb-5 sm:mb-8 md:mb-10
           "
@@ -288,7 +291,7 @@ export default function WaitingAdoption() {
           style={{ height: `${sectionHeight}px` }}
         >
           <div
-            ref={rowRef}
+            data-animal-row
             className="absolute bottom-0 left-0 right-0 flex items-end justify-center"
             style={{ gap: `${cardGap}px` }}
           >
