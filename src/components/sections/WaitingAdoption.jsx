@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Henry from "../../assets/henry.png";
+import Henry from "../../assets/Henry.png";
 import Tommy from "../../assets/Tommy.png";
 import Raj from "../../assets/raj.png";
 import Coffe from "../../assets/coffe.png";

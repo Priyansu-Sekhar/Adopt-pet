@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import petfriends from "../../assets/petfriends.png";
-import petWash from "../../assets/petwash.png";
-import petSitting from "../../assets/petsitting.png";
-import petFood from "../../assets/petfood.png";
+import petWash from "../../assets/petWash.png";
+import petSitting from "../../assets/petSitting.png";
+import petFood from "../../assets/petFood.png";
 import petHealth from "../../assets/pethealth.png";
 import petcare from "../../assets/petcare.png";
 

@@ -1,5 +1,5 @@
 import Duck from '../../assets/duck (2).png';
-import Cocktaiel from '../../assets/cocktiel.png';
+import Cocktaiel from '../../assets/Cocktiel.png';
 
 const Support = () => {
   return (

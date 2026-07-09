@@ -1,5 +1,5 @@
 import { HeartHandshake, Stethoscope, Home } from 'lucide-react'
-import Hamster from '../../assets/hamster.png'
+import Hamster from '../../assets/Hamster.png'
 
 const cards = [
     {
